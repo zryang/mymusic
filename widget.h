@@ -27,9 +27,9 @@ public:
     ~Widget();
 
 private slots:
-    void on_openFileBtn_clicked();
+    void on_openFileBtn_clicked();    
 
-    void on_playBtn_clicked();
+    void on_pButton_clicked();
 
 private:
     Ui::Widget *ui;

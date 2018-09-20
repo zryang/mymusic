@@ -15,7 +15,7 @@ Widget::Widget(QWidget *parent) :
                      Qt::SmoothTransformation)));//设置窗体背景
     this->setPalette(palette);
     ui->groupBox->setVisible(true);
-    ui->groupBox_2->setVisible(false);
+    ui->groupBox_2->setVisible(true);
 }
 
 Widget::~Widget()
@@ -39,27 +39,26 @@ void Widget::on_openFileBtn_clicked()
 
     ui->songLabel->setText(songName);
     ui->songLabel->setStyleSheet("color:#ffffff");//设置歌曲名颜色为白色
-    ui->playBtn->setText("pauss");
     player = new QMediaPlayer(this);
     player->setMedia(QUrl::fromLocalFile(songPath));
     player->play();
     playFlag = false;
     ui->groupBox->setVisible(false);
-    ui->groupBox_2->setVisible(true);
 }
 
-void Widget::on_playBtn_clicked()
+
+
+void Widget::on_pButton_clicked()
 {
+    ui->groupBox_2->setVisible(false);
     if(playFlag)
     {
         playFlag = false;
-        ui->playBtn->setText("pauss");
         player->play();
     }
     else
     {
         playFlag = true;
-        ui->playBtn->setText("play");
         player->pause();
     }
 }
