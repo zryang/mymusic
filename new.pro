@@ -39,4 +39,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resource.qrc
+LIBS += /usr/lib/libtag.dylib
+LIBS += /usr/lib/libtag_c.dylib
 
+INCLUDEPATH += /usr/include/

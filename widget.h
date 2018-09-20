@@ -4,6 +4,15 @@
 #include <QWidget>
 #include <QMediaPlayer>
 #include <QFileDialog>
+#include <QFile>
+#include <QDebug>
+
+//歌曲元素相关
+
+#include <taglib/tag.h>
+#include <taglib/fileref.h>
+#include <taglib/taglib.h>
+#include <taglib/tpropertymap.h>
 
 namespace Ui {
 class Widget;
