@@ -6,6 +6,13 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    this->setAutoFillBackground(true);
+    QPalette palette = this->palette();
+    palette.setBrush(QPalette::Window,
+                     QBrush(QPixmap(":/img/back.jpeg").scaled(this->size(),
+                     Qt::IgnoreAspectRatio,
+                     Qt::SmoothTransformation)));//设置窗体背景
+    this->setPalette(palette);
 }
 
 Widget::~Widget()
@@ -15,13 +22,13 @@ Widget::~Widget()
 
 void Widget::on_openFileBtn_clicked()
 {
-    songPath = QFileDialog::getOpenFileName(this,"open a music","/","*.mp3");
+    songPath = QFileDialog::getOpenFileName(this,"open a music","/Users/zorro/Music/","*.mp3");
     songName = songPath;
-    songName.replace("/Users/zorro/Music/","");
-    songName.replace(".mp3","");
+    songName = songName.mid(songName.lastIndexOf("/")+1);//mid QString字符串截取，得到歌曲名
+    songName = songName.mid(0,songName.lastIndexOf("."));
 
-    //setLabel
     ui->songLabel->setText(songName);
+    ui->songLabel->setStyleSheet("color:#ffffff");//设置歌曲名颜色为白色
     ui->playBtn->setText("pauss");
     player = new QMediaPlayer(this);
     player->setMedia(QUrl::fromLocalFile(songPath));
